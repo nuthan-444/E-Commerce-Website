@@ -1,0 +1,99 @@
+form {
+    width: 400px;
+    height: 600px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.register-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 25px;
+    color: rgba(0, 0, 0, 0.493);
+}
+
+.register-title {
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.register-email-div,.register-password-div,.register-confirmPassword-div,.register-username-div {
+    display: flex;
+    flex-direction: column;
+}
+
+.register-email-div,.register-password-div,.register-confirmPassword-div,.register-username-div label {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: rgba(0, 0, 0, 0.644);
+}
+
+.register-email-div input {
+    font-size: 17px;
+    padding-left: 30px;
+    padding-right: 30px;
+    width: 270px;
+    height: 40px;
+    border-radius:30px;
+    border: 1px solid grey;
+}
+.register-password-div input {
+    font-size: 17px;
+    padding-left: 30px;
+    padding-right: 30px;
+    width: 270px;
+    height: 40px;
+    border-radius:30px;
+    border: 1px solid grey;
+}
+
+.register-confirmPassword-div input {
+    font-size: 17px;
+    padding-left: 30px;
+    padding-right: 30px;
+    width: 270px;
+    height: 40px;
+    border-radius:30px;
+    border: 1px solid grey;
+}
+
+.register-username-div input {
+    font-size: 17px;
+    padding-left: 30px;
+    padding-right: 30px;
+    width: 270px;
+    height: 40px;
+    border-radius:30px;
+    border: 1px solid grey;
+}
+
+
+.register-btn-div {
+    margin-top: 50px;
+}
+
+.register-btn-div button {
+    width: 330px;
+    background-color: #131212;
+    color: white;
+}
+
+.register-btn-div button:hover {
+    background-color: #131212b9;
+}
+
+.already-have-an-account {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+}
+
+.already-have-an-account pre:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}

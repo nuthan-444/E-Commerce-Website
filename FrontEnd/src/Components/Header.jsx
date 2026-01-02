@@ -21,6 +21,8 @@ const Header = () => {
           <input type="search" name="search" id="search" placeholder='Search'/>
       </div>
 
+      {/* Add toggle btn  */}
+
       <div className='login-signup-btn'>
         <Link to="/Login"><Button content={"Login"}/></Link>
         <p>/</p>

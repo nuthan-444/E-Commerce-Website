@@ -1,8 +1,9 @@
 @import '../../index.css';
 
 .outer-layer-header {
+        z-index: 2;
     color: var(--alt-text-color);
-    position: absolute;
+    position: fixed;
     top: 30px;
     left: 50%;
     transform: translate(-50%);
