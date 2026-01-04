@@ -17,7 +17,7 @@ export const AllContextProvider = ({ children }) => {
     }); 
     useEffect(() => {
         sessionStorage.setItem("isLogin",isLogin);
-                  console.log(isLogin);
+        console.log(isLogin);
     },[isLogin])
 
     return (

@@ -3,7 +3,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 import axios from "axios";
 import './Style/Register.css'
 import { UseAllContext } from "../Contexts/AllContext";
-
+import Home from "./Home";
 const Register = () => {
   const {isLogin,setIsLogin} = UseAllContext();
   const navigate = useNavigate();
@@ -50,7 +50,7 @@ const Register = () => {
 
   return (
     <>
-      <form onSubmit={submitHandler} id="register-form">
+      {!isLogin ? <form onSubmit={submitHandler} id="register-form">
         <div className='register-container'>
           <h1 className='register-title'>Register</h1>
           <div className='register-email-div'>
@@ -74,7 +74,7 @@ const Register = () => {
             <pre onClick={() => navigate("/Login")}><span style={{ color: "rgba(0, 140, 255, 1)", fontWeight: "bold" }}> already have an account an account!</span></pre>
           </div>
         </div>
-      </form>
+      </form> : <Home />}
       {showInvalidMessage && <div className="display-invalid-message" ref={invalidMessageDivRef} >{invalidMessage}</div>}
     </>
   );
