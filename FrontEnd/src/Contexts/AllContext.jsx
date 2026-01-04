@@ -11,8 +11,12 @@ const AllContext = createContext();
 export const AllContextProvider = ({ children }) => {
     const navigate = useNavigate();
     //stores is user login or not
-    const [isLogin, setIsLogin] = useState(false); 
+    const [isLogin, setIsLogin] = useState(() => {
+        const login = sessionStorage.getItem("isLogin");
+        return login ? true : false;
+    }); 
     useEffect(() => {
+        sessionStorage.setItem("isLogin",isLogin);
                   console.log(isLogin);
     },[isLogin])
 
