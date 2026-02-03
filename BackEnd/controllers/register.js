@@ -20,7 +20,7 @@ const createUser = async (req,res) => {
         const saltRounds = 10;
         const hashedPassword = await bcrypt.hash(password,saltRounds);
         const userCreated = await Register.create({email,password:hashedPassword,username});
-        res.json("successfully registered",userCreated);
+        res.json({message:"successfully registered",user:userCreated});
     } catch (error) {
         res.json("Failed to register try again ! "+error);
     }

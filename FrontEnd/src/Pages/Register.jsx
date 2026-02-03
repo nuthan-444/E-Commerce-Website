@@ -4,17 +4,21 @@ import axios from "axios";
 import './Style/Register.css'
 import { UseAllContext } from "../Contexts/AllContext";
 import Home from "./Home";
+
+
+
 const Register = () => {
-  const {isLogin,setIsLogin} = UseAllContext();
+  const {isLogin,setIsLogin,userData,setUserData} = UseAllContext();
   const navigate = useNavigate();
   const [invalidMessage,setInvalidMessage] = useState("");
   const [showInvalidMessage,setShowInvalidMessage] = useState(false);
   const invalidMessageDivRef = useRef();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [emailValue, setEmailValue] = useState("");
+  const [passwordValue, setPasswordValue] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [username, setUsername] = useState("");
+  const [usernameValue, setUsernameValue] = useState("");
 
+  
 
   useEffect(() => {
     if (!showInvalidMessage) return;
@@ -26,25 +30,36 @@ const Register = () => {
     return () => clearTimeout(timer);
   }, [showInvalidMessage]);
 
-  function submitHandler(e) {
+  async function submitHandler(e) {
     e.preventDefault();
-    if (password != confirmPassword) {
+    if (passwordValue != confirmPassword) {
         setInvalidMessage("password is not matching !");
         setShowInvalidMessage(true);
         return;
       }
-    if (username.length < 5) {
+    if (usernameValue.length < 5) {
       setInvalidMessage("Username Must be greater than 5 characters .");
       setShowInvalidMessage(true);
-
-      return;  
+      return;
     }
-      setIsLogin(true);
-      navigate("/");
-      setEmail("");
-      setPassword(""); 
+
+    try{
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/register`,{email:emailValue,password:passwordValue,username:usernameValue});
+      if(response.data.message==="successfully registered"){
+          setUserData(response.data.user);
+          console.log(userData);
+          setIsLogin(true);
+          navigate("/");
+      } else {
+      setEmailValue("");
+      setPasswordValue(""); 
       setConfirmPassword("");
-      setUsername("");
+      setUsernameValue("");
+      }
+    } catch(error) {
+      alert("Failed to Create account! try agian");
+      console.log(error)
+    }
   }
 
 
@@ -55,11 +70,11 @@ const Register = () => {
           <h1 className='register-title'>Register</h1>
           <div className='register-email-div'>
             <label htmlFor="email">Email</label>
-            <input type="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+            <input type="email" name="email" value={emailValue} onChange={(e) => setEmailValue(e.target.value)} />
           </div>
           <div className='register-password-div'>
             <label htmlFor="password">Password</label>
-            <input type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+            <input type="password" name="password" value={passwordValue} onChange={(e) => setPasswordValue(e.target.value)} />
           </div>
           <div className='register-confirmPassword-div'>
             <label htmlFor="confirmpassword">confirm Password</label>
@@ -67,7 +82,7 @@ const Register = () => {
           </div>
           <div className='register-username-div'>
             <label htmlFor="username">Username</label>
-            <input type="text" name="username" value={username} onChange={(e) => setUsername(e.target.value)} />
+            <input type="text" name="username" value={usernameValue} onChange={(e) => setUsernameValue(e.target.value)} />
           </div>
           <div className='register-btn-div'><button>Register</button></div>
           <div className='already-have-an-account'>

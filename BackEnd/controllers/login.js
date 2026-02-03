@@ -14,10 +14,23 @@ const userLoginController = async(req,res) => {
             return res.status(401).json("Password incorrect");
         }
 
-        return res.json("Successfully Login");
+        return res.json({message:"Successfully Login",userData:user});
     } catch(error) {
         res.status(500).json("Server Issue ",error);
     }
 }
 
-module.exports = {userLoginController};
+const userDataGetController = async(req,res) => {
+    const {email} = req.body;
+    try{
+        const userData = await User.findOne({email});
+        if(userData){    
+            res.json(userData);
+        }
+        res.json("No such user !");
+    } catch(error){
+        res.json("Failed to get data !").status(500);
+    }
+}
+
+module.exports = {userLoginController,userDataGetController};

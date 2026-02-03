@@ -7,7 +7,7 @@ const app = express();
 
 //to user json as a response
 app.use(express.json());
-
+app.use(cors());
 
 //routing files
 const register = require('./routes/register');

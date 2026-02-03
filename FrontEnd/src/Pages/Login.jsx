@@ -4,26 +4,37 @@ import { Navigate, useNavigate } from "react-router-dom";
 import './Style/Login.css'
 import { UseAllContext } from '../Contexts/AllContext';
 import Home from "./Home"
+import axios from 'axios';
 
 const Login = () => {
-  const {isLogin,setIsLogin} = UseAllContext();
+  const {isLogin,setIsLogin,userData,setUserData} = UseAllContext();
   const [invalidMessage,setInvalidMessage] = useState("");
   const [showInvalidMessage,setShowInvalidMessage] = useState(false);
   const invalidMessageDivRef = useRef();
   const navigate = useNavigate();
-  const [email,setEmail] = useState("");
+  const [emailValue,setEmailValue] = useState("");
   const [password,setPassword] = useState("");
   
   
 
 
 
-  function submitHandler(e) {
+  async function submitHandler(e) {
       e.preventDefault();
-      setEmail("");
-      setPassword("");
-      setIsLogin(true);
-      navigate("/");
+
+      try{
+        const response = await axios.post(`${import.meta.env.VITE_API_URL}/login`,{email:emailValue,password:password});
+
+        if(response.data.message === "Successfully Login"){
+          setIsLogin(true);
+          navigate("/");
+          setUserData(response.data.userData);  //stores in userData variable that stored in sessionStorage
+        }
+
+      } catch (error) {
+          console.log("Axios login error : ",error);
+          alert("Login Page : Something went wrong !");
+      }
   }
 
 
@@ -51,7 +62,7 @@ const Login = () => {
         <h1 className='login-title'>Login</h1>
         <div className='email-div'>  
             <label htmlFor="email">Email</label>
-            <input type="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+            <input type="email" name="email" value={emailValue} onChange={(e) => setEmailValue(e.target.value)} />
         </div>
         <div className='password-div'>   
             <label htmlFor="password">Password</label>

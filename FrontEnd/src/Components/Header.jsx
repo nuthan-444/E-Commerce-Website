@@ -34,6 +34,7 @@ const Header = () => {
       : <div>
         <button onClick={() => { 
           setIsLogin(false)
+          sessionStorage.setItem("userData",null);
         }
           }>Logout</button>
         </div>}
