@@ -1,7 +1,38 @@
-const { Router } = require("express");
 const Product = require("../models/product");
 
 
+
+//get product
+const getProduct = async(req,res) => {
+    let {_id} = req.params;
+    try {
+        const prodData = await Product.findOne({_id:_id});
+        if(!prodData) {
+            res.json({message:"There is no such product."})
+            return;
+        };
+        res.json({message:"got the product data.",productData:prodData});
+    } catch (error){
+        res.json({message:"Failed to Get Product data ! "+error});
+    }
+}
+
+
+//getting product by category
+const getProdByCategory = async(req,res) => {
+    const {category} = req.params;
+    console.log(category);
+    try {
+        const getProd = await Product.find({category});
+        if(getProd.length == 0){
+            res.json({message:"there is no such category."});
+            return;
+        }
+        res.json({message:"got the products of same category.",cateProd:getProd});
+    } catch(error) {
+        res.json({message:"Failed to fetch data !",error:error});
+    }
+}
 
 
 //adding product
@@ -54,4 +85,4 @@ const deleteProduct = async(req,res) => {
 
 
 
-module.exports = {addProduct,updateProduct,deleteProduct}
+module.exports = {getProduct,getProdByCategory,addProduct,updateProduct,deleteProduct}

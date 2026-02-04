@@ -30,11 +30,14 @@ app.get("/",(req,res) => {
 
 // Auth -- Start
 
+
 //register account
 app.use("/api/register",register);
 
+
 //login account
 app.use("/api/login",login);
+
 
 // Auth -- End
 
@@ -49,6 +52,11 @@ app.use("/api/login",login);
 app.use("/api/product",product);
 
 // Product(Admin) -- end
+
+
+
+
+
 
 
 

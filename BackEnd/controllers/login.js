@@ -20,17 +20,5 @@ const userLoginController = async(req,res) => {
     }
 }
 
-const userDataGetController = async(req,res) => {
-    const {email} = req.body;
-    try{
-        const userData = await User.findOne({email});
-        if(userData){    
-            res.json(userData);
-        }
-        res.json("No such user !");
-    } catch(error){
-        res.json("Failed to get data !").status(500);
-    }
-}
 
-module.exports = {userLoginController,userDataGetController};
+module.exports = {userLoginController};

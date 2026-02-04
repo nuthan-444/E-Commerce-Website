@@ -3,9 +3,9 @@ const bcrypt = require('bcryptjs');
 
 
 const getUser = async (req,res) => {
-    const {email} = req.params;
+    const {_id} = req.params;
     try {
-        const userData = await Register.findOne({email});
+        const userData = await Register.findOne({_id:_id});
         if(!userData) return res.status(404).json("Not Found");
         res.json(userData);
     } catch (error) {
