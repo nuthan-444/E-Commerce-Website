@@ -5,11 +5,11 @@ import { UseAllContext } from '../Contexts/AllContext'
 import Login from './Login'
 
 const Order = () => {
-  const {isLogin,setIsLogin} = UseAllContext();  
+  const {isLogin,setIsLogin,userData} = UseAllContext();  
   
   return (
     <>
-    {isLogin ? <div>
+    {(isLogin && userData!=null) ? <div>
       <Header />
       <Footer />
     </div> : <Login />}

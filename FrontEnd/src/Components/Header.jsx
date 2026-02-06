@@ -5,7 +5,7 @@ import {Link} from "react-router-dom"
 import { UseAllContext } from '../Contexts/AllContext'
 
 const Header = () => {
-  const {isLogin,setIsLogin} = UseAllContext();
+  const {isLogin,setIsLogin,userData} = UseAllContext();
   return (
     <div className='outer-layer-header'>
 
@@ -23,6 +23,16 @@ const Header = () => {
           <input type="search" name="search" id="search" placeholder='Search'/>
       </div>
 
+{isLogin?
+      <div className='routes-home-cart-order'>
+        {userData.role===import.meta.env.VITE_ADMIN_ROLE?
+        <Link to="/Admin"><p>Admin</p></Link>
+        :<Link to="/Profile"><p>Profile</p></Link>
+        }
+      </div>
+:<div></div>
+      }
+
       {/* Add toggle btn  */}
 
       {!isLogin ? 
@@ -34,7 +44,7 @@ const Header = () => {
       : <div>
         <button onClick={() => { 
           setIsLogin(false)
-          sessionStorage.setItem("userData",null);
+          sessionStorage.setItem("userData",{_id: "69809707369e6b93217eee68", email: "nuthu@gmail.com",role:"none"});
         }
           }>Logout</button>
         </div>}

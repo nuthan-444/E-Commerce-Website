@@ -12,7 +12,10 @@ export const AllContextProvider = ({ children }) => {
     const navigate = useNavigate();
     const [userData,setUserData] = useState(()=>{
         const userdetail = sessionStorage.getItem("userData");
-        return userdetail ? JSON.parse(userdetail) : null;
+        return userdetail ? JSON.parse(userdetail) : 
+        {
+            _id: "0", email: "@gmail.com",role:"none"
+        };
     });
 
 

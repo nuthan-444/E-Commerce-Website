@@ -5,11 +5,12 @@ import { UseAllContext } from '../Contexts/AllContext'
 import { useNavigate } from 'react-router-dom'
 import Login from './Login'
 const Cart = () => {
-    const {isLogin,setIsLogin} = UseAllContext();
+    const {isLogin,setIsLogin,userData} = UseAllContext();
     const navigate = useNavigate();
   return (
     <>
-    {isLogin ? <div>
+    {isLogin ? 
+    <div>
       <Header />
       <Footer />
     </div> : <Login />}

@@ -10,8 +10,9 @@ import Admin from './Pages/Admin'
 import { AllContextProvider } from './Contexts/AllContext'
 
 
-function App() {
 
+function App() {
+  
   return (
     <>
       <BrowserRouter>
@@ -20,10 +21,10 @@ function App() {
             <Route path='/' element={<Home />} />
             <Route path='/Login' element={<Login />} />
             <Route path='/Register' element={<Register />} />
-            <Route path='/Profile' element={<Profile />} />
             <Route path='/Order' element={<Order />} />
             <Route path='/Cart' element={<Cart />} />
-            <Route path='/Admin' element={<Admin />} />
+            <Route path='/Admin' element={<Admin />} />:  
+            <Route path='/Profile' element={<Profile />} />
           </Routes>
         </AllContextProvider>
       </BrowserRouter>
