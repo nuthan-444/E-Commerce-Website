@@ -17,7 +17,7 @@ const productSchema = mongoose.Schema({
         required:true,
     },
     discountPrice:{
-        type:Number
+        type:Number,
     },
     offer:{
         type:Number,
@@ -28,6 +28,14 @@ const productSchema = mongoose.Schema({
     },
     url:{
         type:String,
+    },
+    numbOfCard:{
+        type:Number,
+        default:0,
+    },
+    order:{
+        type:Number,
+        default:0,
     }
 }, {timestamps:true}, )
 
