@@ -6,14 +6,17 @@ import BigAds from '../Components/BigAds'
 import axios from 'axios'
 import { useEffect } from 'react'
 import { UseAllContext } from '../Contexts/AllContext'
+import { useRef } from 'react'
 
 
 
 const Home = () => {
 
-  const {allProductFromBackend,setAllProductFromBackend,allCategory,setAllCategory} = UseAllContext();
+  const {allCategory,setAllCategory} = UseAllContext();
+  const fetchedRef = useRef(false);
 
-  async function fetchProductFromBackend() {
+
+  async function fetchAllCategoriesFromBackend() {
     try {
         const response = await axios.get(`${import.meta.env.VITE_API_URL}/product/category`);
         if(response.data.message==="fetch successfully.") {
@@ -27,7 +30,10 @@ const Home = () => {
 
 
   useEffect(()=>{
-    fetchProductFromBackend();
+    if(fetchedRef.current){ return;}
+
+    fetchedRef.current = true;
+    fetchAllCategoriesFromBackend();
   },[])
 
 
