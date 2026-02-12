@@ -7,9 +7,9 @@ const getUser = async (req,res) => {
     try {
         const userData = await Register.findOne({_id:_id});
         if(!userData) return res.status(404).json("Not Found");
-        res.json(userData);
+        return res.json(userData);
     } catch (error) {
-        res.status(500).json("server error "+error);
+        return res.status(500).json("server error "+error);
     }
 }
 
@@ -20,9 +20,9 @@ const createUser = async (req,res) => {
         const saltRounds = 10;
         const hashedPassword = await bcrypt.hash(password,saltRounds);
         const userCreated = await Register.create({email,password:hashedPassword,username});
-        res.json({message:"successfully registered",user:userCreated});
+        return res.json({message:"successfully registered",user:userCreated});
     } catch (error) {
-        res.json("Failed to register try again ! "+error);
+        return res.json("Failed to register try again ! "+error);
     }
 }
 

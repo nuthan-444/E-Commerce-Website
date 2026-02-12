@@ -50,14 +50,6 @@ export const AllContextProvider = ({ children }) => {
     //storing all category
 
 
-    //storing All Product data from backend 
-    // const []
-    //storing All Product data from backend 
-
-    // useEffect(() => {
-        
-    // },[allCategory])
-
 
 
     const [allCartProduct,setAllCartProduct] = useState([]);

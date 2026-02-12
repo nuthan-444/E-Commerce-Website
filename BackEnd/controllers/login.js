@@ -16,7 +16,7 @@ const userLoginController = async(req,res) => {
 
         return res.json({message:"Successfully Login",userData:user});
     } catch(error) {
-        res.status(500).json("Server Issue ",error);
+        return res.status(500).json("Server Issue ",error);
     }
 }
 

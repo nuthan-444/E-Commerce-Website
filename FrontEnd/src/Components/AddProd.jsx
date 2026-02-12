@@ -9,9 +9,6 @@ import axios from 'axios';
 const AddProd = () => {
     const {prodDetails, setProdDetails} = UseAllContext();
 
-    const [file, setFile] = useState(null);
-    const [focusDivBorder,setFocusDivBorder] = useState(false);
-
     //product details input
     const [prodNameInput,setProdNameInput] = useState("");
     const [productDescriptionInput,setProductDescriptionInput] = useState("");
@@ -19,7 +16,7 @@ const AddProd = () => {
     const [priceInput,setPriceInput] = useState("");
     const [discountPriceInput,setDiscountPriceInput] = useState("");
     const [ratings,setRatings] = useState("0");
-    const [url,setUrl] = useState("public/vite.svg");
+    const [url,setUrl] = useState("");
 
 
     async function toTheProductDetailsInDataBase(prodDetails) {
@@ -51,32 +48,14 @@ const AddProd = () => {
     }
 
 
-
-
-function fileHandler(file) {
-    if (file.type.startsWith("image/")) {
-        setFile(file);
-        setFocusDivBorder(true);
-        console.log(file);
-        return;
-    }
-    alert("Only image files are allowed!");
-}
-
 return (
     <>
     <div className='Addprod'> <center><h2>Add Product Detailes</h2></center>
 
     <form onSubmit={(e) => storeAllProdDetail(e)}>
-        <div className={focusDivBorder?"file-uplaod-div-focus":'file-uplaod-div-not-focus'}>
-            <input type="file" accept='image/*' id='photo-input' name="photo" required onChange={(e) => fileHandler(e.target.files[0])} />
-
-            {!file ? (
-                <p className='drag-drop-filename'>Drag & Drop Photo or Browse Photo</p>
-            ) : <p className='drag-drop-filename'>{file.name}</p>
-            }</div>
 
             <div className='prod-details'>
+                <div className='prod-detail-div'><label htmlFor="prodImgURL"> URL: <input type="text" name='prodImgURL' placeholder='enter url of the image' required value={url} onChange={(e)=>setUrl(e.target.value)}/></label></div>
                 <div className='prod-detail-div'><label htmlFor="prodname"> Name: <input type="text" name='prodname' placeholder='ex: Watch' required value={prodNameInput} onChange={(e)=>setProdNameInput(e.target.value)}/></label></div>
                 <div className='prod-detail-div'><label htmlFor="proddes"> Description: <input type="text" name='proddes' placeholder='ex: Write about watch' required value={productDescriptionInput} onChange={(e)=>setProductDescriptionInput(e.target.value)}/></label></div>
                 <div className='prod-detail-div'><label htmlFor="prodcategory"> Category: <input type="text" list='categories' name='prodcategory' placeholder='ex: Electronics or Groccessry' required value={categoryInput} onChange={(e)=>setCategoryInput(e.target.value)}/></label></div>
@@ -86,8 +65,8 @@ return (
                   <option value="Womens Collection" />
                   <option value="Grocery" />
                 </datalist>
-                <div className='prod-detail-div'><label htmlFor="prodprice"> Price: <input type="number" name='prodprice' placeholder='ex: $100' required value={priceInput} onChange={(e)=>setPriceInput(e.target.value)}/></label></div>
-                <div className='prod-detail-div'><label htmlFor="proddiscountPrice"> Discount Price: <input type="number" name='proddiscountPrice' placeholder='ex: $50' required value={discountPriceInput} onChange={(e)=>setDiscountPriceInput(e.target.value)}/></label></div>
+                <div className='prod-detail-div'><label htmlFor="prodprice"> Price: <input type="number" name='prodprice' placeholder='ex: ₹100' required value={priceInput} onChange={(e)=>setPriceInput(e.target.value)}/></label></div>
+                <div className='prod-detail-div'><label htmlFor="proddiscountPrice"> Discount Price: <input type="number" name='proddiscountPrice' placeholder='ex: ₹50' required value={discountPriceInput} onChange={(e)=>setDiscountPriceInput(e.target.value)}/></label></div>
                 <div title='given by user' className='prod-detail-div'><label htmlFor="prodratings"> Ratings: <input style={{cursor:"not-allowed"}} type="number" readOnly name='prodratings' placeholder='this will be given by user' value={ratings} onChange={(e)=>setRatings(e.target.value)}/></label></div>
             </div>
 
