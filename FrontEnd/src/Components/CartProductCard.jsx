@@ -3,9 +3,27 @@ import './Style/CartProductCard.css'
 import { UseAllContext } from "../Contexts/AllContext";
 import axios from "axios";
 
-const CartProductCard = ({_id,url,productName,productDescription,ratings,price,discountPrice}) => {
+const CartProductCard = ({email,prodID,url,productName,productDescription,ratings,price,discountPrice}) => {
     
   let offer = (((price - discountPrice) / price) * 100).toFixed(2);
+
+
+
+  const removeFromCart = async(email,prodID) => {
+      try{
+        const response = await axios.delete(`${import.meta.env.VITE_API_URL}/cart/removeoneproductfromcart/${prodID}/${email}`);
+        if(response.data.message==="Removed succussfully."){
+          alert("Product has been removed from the Cart");
+          return;
+        }
+        alert("Try again");
+      }catch(error) {
+          alert("Axios error");
+          console.log(error)
+      }
+  }
+    
+  
 
 
 
@@ -40,6 +58,7 @@ const CartProductCard = ({_id,url,productName,productDescription,ratings,price,d
           <span className="actual-price">₹{price}</span>
         </div>
 
+          <div className='trash-icon-delete-cart-product' title='remove' onClick={()=>removeFromCart(email,prodID)}><i className="fa-solid fa-trash"></i></div>
 
         <button className="add-to-cart-btn">
           Buy

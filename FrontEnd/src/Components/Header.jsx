@@ -27,7 +27,6 @@ const Header = () => {
       <div className='routes-home-cart-order'>
         <Link to="/"><p>Home</p></Link>
         <Link to="/Cart"><p>Cart</p></Link>
-        <Link to="/Order"><p>Order</p></Link>
       </div>
 
       <div className="search-bar-div">

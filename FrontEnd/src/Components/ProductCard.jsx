@@ -20,7 +20,6 @@ const ProductCard = ({_id,url,productName,productDescription,ratings,price,disco
           
           alert("Product Added to cart.");
           setAllCartProduct(prevData => [...prevData,response.data.addedCart]);
-          console.log(allCartProduct);
         }
       }catch(error) {
         alert("Failed to add. try again !")

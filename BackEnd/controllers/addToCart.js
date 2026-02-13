@@ -4,7 +4,7 @@ const Cart = require('../models/cart');
 
 
 
-//getting all product in cart 
+//getting all product ID in cart 
 const getCartProductIdController = async(req,res) => {
     const email = req.params.email;
     try {
@@ -66,4 +66,20 @@ const addToCartController = async(req,res) => {
     }
 }
 
-module.exports = {getCartProductIdController,getAllCardProduct,addToCartController};
+
+
+//remover one product from cart by id number
+const removeOneProductFromCartController = async(req,res) => {
+    const {prodID,email} = req.params;
+    try {
+        const removingProductFromCart = await Cart.deleteOne({email:email,prodID:prodID});
+        if(!removingProductFromCart) return res.json({message:"Failed to Removed"});
+        return res.json({message:"Removed succussfully."});
+    } catch (error) {
+        return res.json({message:"server error."})
+    }
+}
+
+
+
+module.exports = {getCartProductIdController,getAllCardProduct,addToCartController,removeOneProductFromCartController};

@@ -7,6 +7,9 @@ import { useNavigate } from 'react-router-dom'
 import Login from './Login'
 import axios from 'axios'
 import './Style/Cart.css'
+import emptyImage from '../../public/Photos/empty.png'
+
+
 
 const Cart = () => {
     const {isLogin,userData,allCartProduct,setAllCartProduct} = UseAllContext();
@@ -21,7 +24,6 @@ const Cart = () => {
           setAllCartProduct(response.data.cartProducts);
           return;
         }
-        alert("No Cart Item");
     } catch(error) {
       alert("Failed to Fetch!");
       console.log(error);
@@ -47,9 +49,9 @@ useEffect(()=>{
 
           { allCartProduct.length > 0 ? 
             allCartProduct.map((item) => (
-              <CartProductCard key={item._id} _id={item._id} url={item.url} 
+              <CartProductCard key={item._id} email={userData.email} prodID={item._id} url={item.url} 
           productName={item.productName} productDescription={item.productDescription} ratings={item.ratings} price={item.price} discountPrice={item.discountPrice} />
-            )):<div>No Product added</div>
+            )):<div className='empty-image-div'><img src={emptyImage} alt="No  Cart Products" className='empty-image'/></div>
           }
 
           </div>

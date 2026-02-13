@@ -2,7 +2,12 @@
     margin-top: 150px;
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(5, 1fr); /* 🔥 6 items per row */
-    gap: 30px; /* spacing between cards */
+    grid-template-columns: repeat(5, 1fr); 
+    gap: 30px; 
     padding: 50px;
+    /* background-color: red; */
+}
+
+.empty-image {
+    margin-left: 130%;
 }

@@ -7,7 +7,7 @@ import axios from 'axios'
 import { useEffect } from 'react'
 import { UseAllContext } from '../Contexts/AllContext'
 import { useRef } from 'react'
-
+import './Style/Home.css'
 
 
 const Home = () => {

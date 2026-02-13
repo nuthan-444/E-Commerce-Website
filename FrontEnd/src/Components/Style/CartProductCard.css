@@ -106,3 +106,22 @@
   background: #333;
 }
 
+.trash-icon-delete-cart-product {
+  color: black;
+  position: relative;
+  margin-bottom: 10px;
+  right: -85%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+  height: 35px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.trash-icon-delete-cart-product:hover {
+  background-color: rgba(0, 0, 0, 0.61);
+  color: white;
+}
