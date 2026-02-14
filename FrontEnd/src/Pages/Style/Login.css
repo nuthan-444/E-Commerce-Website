@@ -63,7 +63,7 @@
     margin-top: 20px;
 }
 
-.dont-have-an-account pre:hover {
+.dont-have-an-account p:hover {
     text-decoration: underline;
     cursor: pointer;
 }

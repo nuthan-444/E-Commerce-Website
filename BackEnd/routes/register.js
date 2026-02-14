@@ -12,4 +12,4 @@ router.put("/email/:email",updateUser);
 
 router.delete("/email/:email",userDelete);
 
-module.exports = router;
+module.exports = router;                                                                                                            

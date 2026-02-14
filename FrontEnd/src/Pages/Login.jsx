@@ -70,8 +70,8 @@ const Login = () => {
         </div>
         <div className='login-btn-div'><button>Login</button></div>
         <div className='dont-have-an-account'>
-          <pre>forget password?</pre>
-          <pre onClick={() => navigate("/Register")}><span style={{color:"rgba(0, 140, 255, 1)",fontWeight:"bold"}}> create an account</span></pre>
+          <p>forget password?</p>
+          <p onClick={() => navigate("/Register")}><span style={{color:"rgba(0, 140, 255, 1)",fontWeight:"bold"}}> create an account</span></p>
         </div>
       </div> 
       </form> : <Home />}

@@ -94,7 +94,7 @@
     margin-top: 20px;
 }
 
-.already-have-an-account pre:hover {
+.already-have-an-account p:hover {
     text-decoration: underline;
     cursor: pointer;
 }

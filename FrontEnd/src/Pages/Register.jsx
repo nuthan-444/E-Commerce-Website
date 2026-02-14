@@ -86,7 +86,7 @@ const Register = () => {
           </div>
           <div className='register-btn-div'><button>Register</button></div>
           <div className='already-have-an-account'>
-            <pre onClick={() => navigate("/Login")}><span style={{ color: "rgba(0, 140, 255, 1)", fontWeight: "bold" }}> already have an account an account!</span></pre>
+            <p onClick={() => navigate("/Login")}><span style={{ color: "rgba(0, 140, 255, 1)", fontWeight: "bold" }}> already have an account an account!</span></p>
           </div>
         </div>
       </form> : <Home />}
