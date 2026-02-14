@@ -15,16 +15,16 @@ const Profile = () => {
       <div className='profile-div'>
           <div className='user-pic'><img src={defaultProfilePic} alt="" /></div>
           <div className='userdata'>
-            <label htmlFor="">Username:</label>
-            <p>{userData.username}</p>
+            <label htmlFor="">Username: </label>
+            <pre> {userData.username}</pre>
           </div>
           <div className='userdata'>
-            <label htmlFor="">Email:</label>
-            <p>{userData.email}</p>
+            <label htmlFor="">Email: </label>
+            <pre> {userData.email}</pre>
           </div>
           <div className='userdata'>
-            <label htmlFor="">UserID:</label>
-            <p>{userData._id}</p>
+            <label htmlFor="">UserID: </label>
+            <pre> {userData._id}</pre>
           </div>
       </div>
       <Footer />

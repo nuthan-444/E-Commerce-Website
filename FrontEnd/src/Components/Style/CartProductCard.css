@@ -122,6 +122,6 @@
 }
 
 .trash-icon-delete-cart-product:hover {
-  background-color: rgba(0, 0, 0, 0.61);
+  background-color: rgb(0, 0, 0);
   color: white;
 }

@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom'
 import Login from './Login'
 import axios from 'axios'
 import './Style/Cart.css'
-import emptyImage from '../../public/Photos/empty.png'
+import emptyImage from '/Photos/empty.png'
 
 
 
