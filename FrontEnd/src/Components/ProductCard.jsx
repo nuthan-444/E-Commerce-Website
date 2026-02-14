@@ -13,6 +13,8 @@ const ProductCard = ({_id,url,productName,productDescription,ratings,price,disco
       const {userData,allCartProduct,setAllCartProduct} = UseAllContext();
 
 
+
+    //add to card for user
     const addToCart = async(_id) => {
       try{
         const response = await axios.post(`${import.meta.env.VITE_API_URL}/cart`,{email:userData.email,_id:_id});
@@ -26,6 +28,21 @@ const ProductCard = ({_id,url,productName,productDescription,ratings,price,disco
         console.log(error)
       }
     }
+
+
+    // deleting the product from DB for Admin
+    const deleteProductFromDB = async(_id) => {
+      try{
+        const response = await axios.delete(`${import.meta.env.VITE_API_URL}/product/${_id}`);
+        if(response.data.message==="Successfully Deleted.") {
+          alert("deleted successfully.");
+        }
+      } catch(error) {
+        alert("Failed to delete! Try agian");
+      }
+    }
+
+
 
 
   return (
@@ -58,7 +75,10 @@ const ProductCard = ({_id,url,productName,productDescription,ratings,price,disco
           <span className="actual-price">₹{price}</span>
         </div>
 
-
+        { userData.role===import.meta.env.VITE_ADMIN_ROLE ?
+          <div className='trash-icon-delete-cart-product' title='delete' onClick={()=>deleteProductFromDB(_id)}><i className="fa-solid fa-trash"></i></div>
+          : <></>
+        }
         <button className="add-to-cart-btn" onClick={() => addToCart(_id)}>
           Add to Cart
         </button>

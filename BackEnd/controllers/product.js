@@ -81,12 +81,12 @@ const updateProduct = async(req,res) => {
 
 //Deleting Product
 const deleteProduct = async(req,res) => {
-    const {_id} = req.body;
+    const {_id} = req.params;
     try {
         const deletingProduct = await Product.findOneAndDelete({_id});
-        return res.json("Successfully Deleted.").status(200);
+        return res.json({message:"Successfully Deleted."}).status(200);
     } catch (error) {
-        return res.json("Failed to delete the product ! "+error).status(500);
+        return res.json({message:"Failed to delete the product ! ",error:error}).status(500);
     }
 }
 

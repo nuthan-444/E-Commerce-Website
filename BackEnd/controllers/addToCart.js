@@ -82,4 +82,7 @@ const removeOneProductFromCartController = async(req,res) => {
 
 
 
+
+
+
 module.exports = {getCartProductIdController,getAllCardProduct,addToCartController,removeOneProductFromCartController};

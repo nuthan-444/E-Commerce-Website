@@ -12,7 +12,7 @@ router.post("/",addProduct);
 
 router.put("/",updateProduct);
 
-router.delete("/",deleteProduct);
+router.delete("/:_id",deleteProduct);
 
 
 module.exports = router;
