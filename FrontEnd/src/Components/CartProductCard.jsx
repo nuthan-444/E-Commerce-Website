@@ -35,7 +35,7 @@ const CartProductCard = ({email,prodID,url,productName,productDescription,rating
         {offer}% OFF
       </div>
 
-      <img src={url} alt={productName} className="product-image" />
+      <img src={url} alt={productName} loading='lazy' className="product-image" />
 
       <div className="product-info">
         <h3 className="product-name">{productName}</h3>

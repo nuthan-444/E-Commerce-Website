@@ -63,6 +63,6 @@ app.use("/api/cart",cart);
 
 
 
-app.listen(PORT,"0.0.0.0",() => {
+app.listen(PORT,() => {
     console.log(`Server is listening at ${PORT}`);
 })
