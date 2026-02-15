@@ -19,9 +19,11 @@ const updateUser = async(req,res) => {
 
 
 const userDelete = async(req,res) => {
-    const {email} = req.params;
+    const {_id} = req.params;
+
+
     try {
-        const isDeleted = await User.findOneAndDelete({email});
+        const isDeleted = await User.findOneAndDelete({_id});
         if(isDeleted != null){
             return res.json({message:"deleted successfully"})
         } else {

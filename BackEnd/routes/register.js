@@ -10,6 +10,7 @@ router.post("/",createUser);
 
 router.put("/email/:email",updateUser);
 
-router.delete("/email/:email",userDelete);
+router.delete("/_id/:_id",userDelete);
+
 
 module.exports = router;                                                                                                            

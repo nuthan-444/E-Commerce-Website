@@ -29,6 +29,8 @@ const Login = () => {
           setIsLogin(true);
           navigate("/");
           setUserData(response.data.userData);  //stores in userData variable that stored in sessionStorage
+        } else if(response.data.message==="There is no such account in that email") {
+          alert("there is no such user.")
         }
 
       } catch (error) {
