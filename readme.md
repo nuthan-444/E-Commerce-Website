@@ -117,7 +117,7 @@ Possible contributions:
 
 <p>
 This project gave me hands-on experience in building scalable and secure web applications. Looking forward to adding more advanced features like payment integration and order tracking!
-I’d love to hear your feedback 😊
+I’d love to hear your feedback 😊.
 </p>
 <hr>
 
